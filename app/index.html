@@ -6,12 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Minimalist Webpack Boilerplate</title>
+  <title>Hangman</title>
 </head>
 
 <body>
-  <h1>Minimalist Webpack Boilerplate</h1>
-
+  <div class="container">
+    <div class="hangman">
+      <div class="hangman__head head">
+        <div class="head__hair head__hair--left"></div>
+        <div class="head__hair head__hair--right"></div>
+        <div class="head__ear head__ear--left"></div>
+        <div class="head__ear head__ear--right"></div>
+        <div class="head__eye head__eye--left"></div>
+        <div class="head__eye head__eye--right"></div>
+        <div class="head__mouth"></div>
+        <div class="head__beard"></div>
+      </div>
+      <div class="hangman__neck"></div>
+      <div class="hangman__chest chest">
+        <div class="chest__arm chest__arm--left arm">
+          <div class="arm__hand arm__hand--left"></div>
+        </div>
+        <div class="chest__arm chest__arm--right arm">
+          <div class="arm__hand arm__hand--right"></div>
+        </div>
+      </div>
+    </div>
+    <div class="missed"></div>
+    <div class="word"></div>
+  </div>
 </body>
 
 </html>

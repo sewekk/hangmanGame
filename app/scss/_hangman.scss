@@ -1,0 +1,18 @@
+.hangman{
+    width:150px;
+    position: relative;
+   
+    @import './head';
+
+    &__neck{
+        width:40px;
+        height:40px;
+        background-color: #f1c27d;
+        position: absolute;
+        left:50%;
+        transform: translate(-50%,-50%);
+        z-index: -1;
+    }
+
+    @import './chest';
+}

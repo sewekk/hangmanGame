@@ -1,0 +1,28 @@
+.chest{
+    width:65%;
+    height: 120px;
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,+5%);
+
+    &::before{
+        content: "";
+        display: block;
+        width:50%;
+        height: 100%;
+        border-top-left-radius: 20px;
+        background-color: rgb(120, 214, 120);
+        position: absolute;
+    }
+    
+    &::after{
+        content: "";
+        display: block;
+        width:50%;
+        height: 100%;
+        border-top-right-radius: 20px;
+        right: 1%;
+        background-color: rgb(78, 134, 78);
+        position: absolute;
+    }
+}
