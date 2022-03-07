@@ -11,27 +11,41 @@
 
 <body>
   <div class="container">
-    <div class="hangman">
-      <div class="hangman__head head">
-        <div class="head__hair head__hair--left"></div>
-        <div class="head__hair head__hair--right"></div>
-        <div class="head__ear head__ear--left"></div>
-        <div class="head__ear head__ear--right"></div>
-        <div class="head__eye head__eye--left"></div>
-        <div class="head__eye head__eye--right"></div>
-        <div class="head__mouth"></div>
-        <div class="head__beard"></div>
+    <section class="hangman-container">
+      <div class="gallows">
+        <div class="gallows__horizontal"></div>
+        <div class="gallows__vertical"></div>
       </div>
-      <div class="hangman__neck"></div>
-      <div class="hangman__chest chest">
-        <div class="chest__arm chest__arm--left arm">
-          <div class="arm__hand arm__hand--left"></div>
+      <div class="hangman">
+        <div class="hangman__head head">
+          <div class="head__hair head__hair--left"></div>
+          <div class="head__hair head__hair--right"></div>
+          <div class="head__ear head__ear--left"></div>
+          <div class="head__ear head__ear--right"></div>
+          <div class="head__eye head__eye--left"></div>
+          <div class="head__eye head__eye--right"></div>
+          <div class="head__mouth"></div>
+          <div class="head__beard"></div>
         </div>
-        <div class="chest__arm chest__arm--right arm">
-          <div class="arm__hand arm__hand--right"></div>
+        <div class="hangman__neck"></div>
+        <div class="hangman__chest chest">
+          <div class="chest__arm chest__arm--left arm">
+            <div class="arm__hand arm__hand--left"></div>
+          </div>
+          <div class="chest__arm chest__arm--right arm">
+            <div class="arm__hand arm__hand--right"></div>
+          </div>
+          <div class="chest__hips"></div>
         </div>
-      </div>
-    </div>
+        <div class="legs">
+          <div class="legs__leg legs__leg--left leg">
+            <div class="leg__foot leg__foot--left"></div>
+          </div>
+          <div class="legs__leg legs__leg--right">
+            <div class="leg__foot leg__foot--right"></div>
+          </div>
+        </div>
+    </section>
     <div class="missed"></div>
     <div class="word"></div>
   </div>

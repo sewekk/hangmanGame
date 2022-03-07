@@ -1,7 +1,10 @@
 .hangman{
-    width:150px;
+    width:140px;
     position: relative;
-   
+    left: calc(250px - (170px / 2));
+    height: 500px;
+    top:7vh;
+    
     @import './head';
 
     &__neck{
@@ -15,4 +18,6 @@
     }
 
     @import './chest';
+    
+    @import './legs';
 }

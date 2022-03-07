@@ -1,0 +1,19 @@
+.gallows{
+    flex-basis: 30%;
+    position: relative;
+    top: 5vh;
+    
+    &__horizontal{
+        width:250px;
+        height: 25px;
+        background-color: rgb(23, 24, 24);
+    }
+
+    &__vertical{
+        width:25px;
+        height:50px;
+        background-color: rgb(23, 24, 24);
+        position: absolute;
+        left: calc(250px - 25px);
+    }
+}
