@@ -2,7 +2,10 @@
     margin: 0;
     padding:0;
 }
+@import './scss/variables';
 @import './scss/container.scss';
 @import './scss/hangman-container';
 @import './scss/gallows';
 @import './scss/_hangman.scss';
+@import './scss/_missed';
+@import './scss/_letters';
