@@ -5,5 +5,31 @@
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: space-around;
+    position: relative;
+
+    &::before{
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+    //   border-bottom: 50vh solid rgb(15, 98, 206);
+    //   border-left: 50vh solid transparent;
+      position: absolute;
+      bottom:0;
+      right: 0;
+      z-index: -1;
+
+      @media screen and (min-width: 850px) {
+        border-bottom: 50vh solid rgb(15, 98, 206);
+        border-left: 50vh solid transparent;    
+      }
+      
+      @media screen and (min-width: 1240px) {
+        border-bottom: 65vh solid rgb(15, 98, 206);
+        border-left: 65vh solid transparent;    
+      }
+
+      
+    }
 }

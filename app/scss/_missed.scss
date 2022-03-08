@@ -1,28 +1,53 @@
 .missed{
     flex-basis: 100%;
     font-family: $font-family;
-    margin-left:10px;
+    
+    @media screen and (min-width: 850px) {
+        flex-basis: 60%;
+      }
     
     &__title{
-        font-size:2.5rem;
+        font-size:1.5rem;
         color:#202020;
         text-transform: uppercase;
         margin-left:15px;
         font-weight: 700;
+        text-align: center;
+        
+        @media screen and (min-width: 700px) {
+            font-size:2.5rem;
+          }
+        
+        @media screen and (min-width: 850px) {
+            font-size:3.5rem;
+            text-align: left;
+          }
     }
 
     &__letters{
-        font-size:5rem;
+        font-size:2.5rem;
         font-weight: 700;
         color: rgb(15, 98, 206);
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
+        margin-left:5px;
+
+        @media screen and (min-width: 700px) {
+            font-size:3.5rem;
+          }
+        @media screen and (min-width: 850px) {
+            font-size:4.5rem;
+            justify-content: flex-start;
+          }
+       
     }
 
     .letters{
         &__letter{
             padding: 0 5px;
-            margin-top:-1.5rem;
+            margin-top:-1rem;
+            
         }
     }
 }
