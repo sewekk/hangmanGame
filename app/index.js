@@ -1,13 +1,9 @@
 import './index.scss';
+import Hangman from './js/Hangman';
 
-const letters = document.querySelectorAll('.word__letter');
-const lettersContainerWidth = document.querySelector('.word').offsetWidth;
+window.addEventListener("DOMContentLoaded", () => {
+    const game = new Hangman();
+    window.addEventListener('resize', game.displayWordTiles);
+});
 
-const widthOfLetter = (lettersContainerWidth / letters.length) - 10;
-
-console.log(widthOfLetter);
-letters.forEach(item => {
-    item.style.width = `${widthOfLetter}px`;
-    item.style.height = `${widthOfLetter}px`;
-})
 
