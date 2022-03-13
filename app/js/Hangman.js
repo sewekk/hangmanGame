@@ -6,9 +6,10 @@ class Hangman {
 		this.apiKey = 'hello';
 		this.apiUrl = 'world';
 		this.letterContainer = document.querySelector('.word');
+		this.missedContainer = document.querySelector('.missed__letters');
 		this.letters;
-		this.ifWin = false;
-
+		this.remainingLives = 6;
+		
 		this.getWord(this.apiKey, this.apiUrl);
 		this.listenerOnKeyDownEvent();
 	};
@@ -28,7 +29,7 @@ class Hangman {
 	}
 
 	displayWordTiles = () => {
-		this.letters = document.querySelectorAll('.word__letter');
+		this.letters = [...document.querySelectorAll('.word__letter')];
 		this.letters.innerHTML = "";
 		const lettersContainerWidth = this.letterContainer.offsetWidth;
 		let widthOfLetter = (lettersContainerWidth / this.letters.length) - 10;
@@ -57,18 +58,27 @@ class Hangman {
 		[...this.word].forEach((letter, index) => {
 			if(letter === this.currentLetter){
 				this.guessedWord[index] = this.currentLetter;
-				console.log(index);
+				this.letters[index].textContent = this.currentLetter;
 				ifGuessed = true;
 			};
 		});
 
-		if(ifGuessed === false){
-			this.missed.push(this.currentLetter);
-			this.displayMissed();
+		if(!ifGuessed){
+			if(!this.missed.includes(this.currentLetter)){
+				this.missed.push(this.currentLetter);
+				this.displayMissed(this.missed[this.missed.length -1]);
+				this.remainingLives--;
+				if(this.remainingLives >= 0){
+					this.drawHangman();
+				}
+				else{
+					alert('looser');
+				}	
+			}
 		}
 		
 		const checkIfWin = this.checkIfWin();
-		if(checkIfWin === ture){
+		if(checkIfWin === true){
 			this.displayWinnerWindow()
 		}
 	};
@@ -82,11 +92,19 @@ class Hangman {
 		} 
 	}
 
-	displayWinnerWindow = () => {
-		console.log('winner!');
+	displayMissed = (missedLetter) => {
+		const missedLetterContainer = document.createElement('p');
+		missedLetterContainer.classList.add('letters__letter');
+		missedLetterContainer.textContent = `${missedLetter}`.toUpperCase();
+		this.missedContainer.appendChild(missedLetterContainer);
 	}
 
+	drawHangman = () => {
 
+	}
 
+	displayWinnerWindow = () => {
+		alert('winner');
+	}
 }
 export default Hangman;
