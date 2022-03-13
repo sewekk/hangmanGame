@@ -7,7 +7,8 @@ class Hangman {
 		this.apiUrl = 'world';
 		this.letterContainer = document.querySelector('.word');
 		this.missedContainer = document.querySelector('.missed__letters');
-		this.letters;
+		this.letters ;
+
 		this.remainingLives = 6;
 		
 		this.getWord(this.apiKey, this.apiUrl);
