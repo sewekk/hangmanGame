@@ -7,10 +7,10 @@ class Hangman {
 		this.apiUrl = 'world';
 		this.letterContainer = document.querySelector('.word');
 		this.missedContainer = document.querySelector('.missed__letters');
-		this.letters ;
-
+		this.letters;
 		this.remainingLives = 6;
-		
+		this.partsOfBody;
+	
 		this.getWord(this.apiKey, this.apiUrl);
 		this.listenerOnKeyDownEvent();
 	};
@@ -100,8 +100,8 @@ class Hangman {
 		this.missedContainer.appendChild(missedLetterContainer);
 	}
 
-	drawHangman = () => {
-
+	drawHangman = (partOfBody) => {
+		partOfBody.style.display = 'block';
 	}
 
 	displayWinnerWindow = () => {
