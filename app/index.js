@@ -4,6 +4,7 @@ import Hangman from './js/Hangman';
 window.addEventListener("DOMContentLoaded", () => {
     const game = new Hangman();
     window.addEventListener('resize', game.displayWordTiles);
+    document.querySelector('.hangman').style.display = 'block';
 });
 
 

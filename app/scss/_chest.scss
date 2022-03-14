@@ -4,7 +4,9 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, +5%);
-    // display: none;
+    transition: 0.5s;
+    opacity: 0;
+    
   
     &::before {
       content: "";
@@ -75,6 +77,15 @@
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
       z-index: -1000;
+      transition: 0.5s;
+      
+      &--right{
+        opacity:0;
+      }
+      &--left{
+        opacity:0;
+        
+      }
     }
   }
   

@@ -8,15 +8,24 @@ class Hangman {
 		this.letterContainer = document.querySelector('.word');
 		this.missedContainer = document.querySelector('.missed__letters');
 		this.letters;
-		this.remainingLives = 6;
-		this.partsOfBody;
-	
+		this.remainingLives = 0;
+		this.partsOfBody = [
+			['.head', '.hangman__neck'],
+			['.chest'],
+			['.arm__hand--left'],
+			['.arm__hand--right'],
+			['.legs'],
+			['.leg__foot--left'],
+			['.leg__foot--right']
+		];
+
 		this.getWord(this.apiKey, this.apiUrl);
 		this.listenerOnKeyDownEvent();
 	};
 
 	getWord = (apiKey, apiUrl) => {
 		this.createWordTiles(this.word.length);
+		document.querySelector('.hangman').style.display = 'block';
 	}
 
 	createWordTiles = (wordLenght) => {
@@ -54,43 +63,44 @@ class Hangman {
 		})
 	};
 
-	checkIfWordContainsLetter = () => {	
+	checkIfWordContainsLetter = () => {
 		let ifGuessed = false;
 		[...this.word].forEach((letter, index) => {
-			if(letter === this.currentLetter){
+			if (letter === this.currentLetter) {
 				this.guessedWord[index] = this.currentLetter;
 				this.letters[index].textContent = this.currentLetter;
 				ifGuessed = true;
 			};
 		});
 
-		if(!ifGuessed){
-			if(!this.missed.includes(this.currentLetter)){
+		if (!ifGuessed) {
+			if (!this.missed.includes(this.currentLetter)) {
 				this.missed.push(this.currentLetter);
-				this.displayMissed(this.missed[this.missed.length -1]);
-				this.remainingLives--;
-				if(this.remainingLives >= 0){
-					this.drawHangman();
+				this.displayMissed(this.missed[this.missed.length - 1]);
+
+				if (this.remainingLives < 8) {
+					this.drawHangman(this.partsOfBody[this.remainingLives]);
+					this.remainingLives++;
+					console.log(this.remainingLives);
+					if (this.remainingLives === 7) {
+						setTimeout(() => alert('looser'), 1000)
+					}
 				}
-				else{
-					alert('looser');
-				}	
 			}
 		}
-		
+
 		const checkIfWin = this.checkIfWin();
-		if(checkIfWin === true){
+		if (checkIfWin === true) {
 			this.displayWinnerWindow()
 		}
 	};
 
 	checkIfWin = () => {
-		if(this.word === this.guessedWord.join('')){
+		if (this.word === this.guessedWord.join('')) {
 			return true;
-		} 
-		else{
+		} else {
 			return false;
-		} 
+		}
 	}
 
 	displayMissed = (missedLetter) => {
@@ -101,7 +111,11 @@ class Hangman {
 	}
 
 	drawHangman = (partOfBody) => {
-		partOfBody.style.display = 'block';
+		partOfBody.forEach(part => {
+			const elementToShow = document.querySelector(`${part}`);
+			elementToShow.style.opacity = 1;
+		})
+
 	}
 
 	displayWinnerWindow = () => {
