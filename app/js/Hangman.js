@@ -1,12 +1,15 @@
 class Hangman {
-	constructor() {
-		this.word = 'siemaa';
+	constructor(apiKey) {
+		this.word;
 		this.guessedWord = [];
 		this.missed = [];
-		this.apiKey = 'hello';
-		this.apiUrl = 'world';
+		this.apiKey = apiKey;
+		this.apiUrl = 'https://api.wordnik.com/v4/words.json/';
 		this.letterContainer = document.querySelector('.word');
 		this.missedContainer = document.querySelector('.missed__letters');
+		this.goNextWordModal = document.querySelector('.go-next-word');
+		this.ModalMessage = document.querySelector('.go-next-word__status');
+		this.newWordBtn = document.querySelector('.button');
 		this.letters;
 		this.remainingLives = 0;
 		this.partsOfBody = [
@@ -18,14 +21,20 @@ class Hangman {
 			['.leg__foot--left'],
 			['.leg__foot--right']
 		];
-
 		this.getWord(this.apiKey, this.apiUrl);
 		this.listenerOnKeyDownEvent();
 	};
 
 	getWord = (apiKey, apiUrl) => {
-		this.createWordTiles(this.word.length);
-		document.querySelector('.hangman').style.display = 'block';
+		fetch(`${apiUrl}randomWord?&api_key=${apiKey}`)
+			.then(response => response.json())
+			.then(response => this.word = response.word)
+			.then(() => {
+				this.createWordTiles(this.word.length);
+				document.querySelector('.hangman').style.display = 'block';
+			})
+			.then(()=> console.log(this.word))
+			.catch(error => alert(error))
 	}
 
 	createWordTiles = (wordLenght) => {
@@ -79,11 +88,18 @@ class Hangman {
 				this.displayMissed(this.missed[this.missed.length - 1]);
 
 				if (this.remainingLives < 8) {
-					this.drawHangman(this.partsOfBody[this.remainingLives]);
+					this.drawHangman(this.partsOfBody[this.remainingLives], 1);
 					this.remainingLives++;
 					console.log(this.remainingLives);
 					if (this.remainingLives === 7) {
-						setTimeout(() => alert('looser'), 1000)
+
+						this.letters.forEach((item, index) => {
+							item.textContent = this.word[index];
+						})
+
+						setTimeout(() => {
+							this.displayEndGameWindow('You Lost!')
+						}, 500)
 					}
 				}
 			}
@@ -91,7 +107,9 @@ class Hangman {
 
 		const checkIfWin = this.checkIfWin();
 		if (checkIfWin === true) {
-			this.displayWinnerWindow()
+			setTimeout(()=>{
+				this.displayEndGameWindow('You Won!')
+			},500)	
 		}
 	};
 
@@ -110,16 +128,31 @@ class Hangman {
 		this.missedContainer.appendChild(missedLetterContainer);
 	}
 
-	drawHangman = (partOfBody) => {
+	drawHangman = (partOfBody, value) => {
 		partOfBody.forEach(part => {
 			const elementToShow = document.querySelector(`${part}`);
-			elementToShow.style.opacity = 1;
-		})
-
+			elementToShow.style.opacity = value;
+		});
 	}
 
-	displayWinnerWindow = () => {
-		alert('winner');
+	displayEndGameWindow = (status) => {
+		this.ModalMessage.textContent = status;
+		this.goNextWordModal.style.display = 'flex';
+		this.newWordBtn.addEventListener('click', this.reset);
+	}
+
+	reset = () =>{
+		document.querySelector('.hangman').style.display = 'none';
+		this.partsOfBody.forEach(item =>{
+			this.drawHangman(item,0);
+		});
+		this.remainingLives = 0;
+		this.missed = [];
+		this.guessedWord = [];
+		this.missedContainer.innerHTML = "";
+		this.letterContainer.innerHTML = "";
+		this.getWord(this.apiKey, this.apiUrl);
+		this.goNextWordModal.style.display = 'none';
 	}
 }
 export default Hangman;
