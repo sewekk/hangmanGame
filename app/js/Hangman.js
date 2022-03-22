@@ -28,7 +28,7 @@ class Hangman {
 	getWord = (apiKey, apiUrl) => {
 		fetch(`${apiUrl}randomWord?&api_key=${apiKey}`)
 			.then(response => response.json())
-			.then(response => this.word = response.word)
+			.then(response => this.word = response.word.toLowerCase())
 			.then(() => {
 				this.createWordTiles(this.word.length);
 				document.querySelector('.hangman').style.display = 'block';
@@ -47,6 +47,7 @@ class Hangman {
 	}
 
 	displayWordTiles = () => {
+		console.log(this.letterContainer.offsetWidth);
 		this.letters = [...document.querySelectorAll('.word__letter')];
 		this.letters.innerHTML = "";
 		const lettersContainerWidth = this.letterContainer.offsetWidth;
