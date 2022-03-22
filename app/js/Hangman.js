@@ -67,8 +67,16 @@ class Hangman {
 
 	listenerOnKeyDownEvent = () => {
 		document.addEventListener('keydown', (e) => {
-			this.currentLetter = e.code.slice(-1).toLowerCase();
-			this.checkIfWordContainsLetter();
+			this.currentLetter = e.key.toLowerCase();	
+			const regex = new RegExp('[a-z]');
+			const match = regex.test(this.currentLetter);
+			
+			if(match === true && this.currentLetter.length === 1){
+				this.checkIfWordContainsLetter();
+			}
+			else{
+				return;
+			}
 		})
 	};
 
