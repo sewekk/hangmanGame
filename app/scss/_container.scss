@@ -21,12 +21,12 @@
       z-index: -1;
 
       @media screen and (min-width: 850px) {
-        border-bottom: 50vh solid rgb(15, 98, 206);
+        border-bottom: 50vh solid $blue-base-color;
         border-left: 50vh solid transparent;    
       }
       
       @media screen and (min-width: 1240px) {
-        border-bottom: 65vh solid rgb(15, 98, 206);
+        border-bottom: 65vh solid $blue-base-color;
         border-left: 65vh solid transparent;    
       }
 

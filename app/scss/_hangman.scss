@@ -11,7 +11,7 @@
     &__neck{
         width:40px;
         height:40px;
-        background-color: #f1c27d;
+        background-color: $skin-primary-color;
         position: absolute;
         left:50%;
         transform: translate(-50%,-50%);

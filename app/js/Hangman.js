@@ -33,7 +33,6 @@ class Hangman {
 				this.createWordTiles(this.word.length);
 				document.querySelector('.hangman').style.display = 'block';
 			})
-			.then(()=> console.log(this.word))
 			.catch(error => alert(error))
 	}
 

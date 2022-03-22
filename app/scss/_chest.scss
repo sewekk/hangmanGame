@@ -14,7 +14,7 @@
       width: 50%;
       height: 100%;
       border-top-left-radius: 20px;
-      background-color: rgb(120, 214, 120);
+      background-color: $green-base-color;
       position: absolute;
     }
   
@@ -25,7 +25,7 @@
       height: 100%;
       border-top-right-radius: 20px;
       right: 1%;
-      background-color: rgb(78, 134, 78);
+      background-color: $green-secondary-color;
       position: absolute;
     }
   
@@ -40,21 +40,21 @@
         transform: rotate(45deg);
         left: -35px;
         top: -12px;
-        background-color: rgb(120, 214, 120);
+        background-color: $green-base-color;
       }
   
       &--right {
         transform: rotate(-45deg);
         right: -35px;
         top: -12px;
-        background-color: rgb(78, 134, 78);
+        background-color: $green-secondary-color;
       }
     }
   
     &__hips {
       width: 100%;
       height: 30px;
-      background-color: rgb(15, 98, 206);
+      background-color: $blue-base-color;
       position: absolute;
       bottom: -20%;
       z-index: 3;
@@ -69,7 +69,7 @@
       display: block;
       width: 25px;
       height: 15px;
-      background-color: #f1c27d;
+      background-color: $skin-primary-color;
       position: absolute;
       bottom: -10px;
       left: 50%;
@@ -83,8 +83,7 @@
         opacity:0;
       }
       &--left{
-        opacity:0;
-        
+        opacity:0;  
       }
     }
   }
